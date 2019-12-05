@@ -37,9 +37,8 @@ app.delete('/users/:id', (req, res) => {
 })
 
 app.post('/users', (req, res) => {
-    if (!req.body.name,
-        !req.body.bio,
-        ) {
+    const user = req.body
+    if (!req.body.name,) {
             return res.status(400).json({ error: "Need requied field"})
         }
 
@@ -53,6 +52,7 @@ app.post('/users', (req, res) => {
 })
 
 app.put('/users/:id', (req, res) => {
+    const user = db.find(row => row.id === req.params.id)
     if (!req.body.name,
         !req.body.bio,
         ) {
